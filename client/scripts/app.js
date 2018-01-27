@@ -33,7 +33,8 @@ var app = {
         console.log(data);
         app.clearMessages();
         app.renderMessage(data.results);
-        var allRooms = app.sortRooms(data);
+        var allRooms = app.sortRooms(data.results);
+        console.log('allRooms', allRooms);
       },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -68,7 +69,7 @@ var app = {
     for (var i = 0; i < array.length; i++) {
       var roomTopic = array[i].roomname;
       if (!roomTopic) {
-        array[i][roomname] = 'lobby';
+        array[i]['theLounge'] = 'theLounge';
       }
       if (roomList[roomTopic] === undefined) {
         roomList[roomTopic] = [array[i]];
