@@ -4,7 +4,7 @@ var app = {
     app.fetch();
     setTimeout(function() {
       app.fetch();
-    }, 1000);
+    }, 333);
   },
   send: function(message) {
     $.ajax({
@@ -33,6 +33,7 @@ var app = {
         console.log(data);
         app.clearMessages();
         app.renderMessage(data.results);
+        var allRooms = app.sortRooms(data);
       },
       error: function (data) {
         // See: https://developer.mozilla.org/en-US/docs/Web/API/console.error
@@ -61,6 +62,22 @@ var app = {
   renderRoom: function(roomName) {
     $('#roomSelect').append('<div>' + roomName + '</div>');
     
+  },
+  sortRooms: function(array) {
+    var roomList = {};
+    for (var i = 0; i < array.length; i++) {
+      var roomTopic = array[i].roomname;
+      if (!roomTopic) {
+        array[i][roomname] = 'lobby';
+      }
+      if (roomList[roomTopic] === undefined) {
+        roomList[roomTopic] = [array[i]];
+      }
+      if (array[i].roomname !== undefined) {
+        roomList[roomTopic].push(array[i]);
+      } 
+    }
+    return roomList;
   },
   handleUsernameClick: function(username) {
     // document.getElementById("username").addEventListener("click", console.log('hi'));
