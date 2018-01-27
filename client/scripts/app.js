@@ -2,6 +2,9 @@
 var app = {
   init: function() {
     app.fetch();
+    setTimeout(function() {
+      app.fetch();
+    }, 1000);
   },
   send: function(message) {
     $.ajax({
@@ -28,6 +31,7 @@ var app = {
       success: function (data) {
         console.log('chatterbox: Data loaded');
         console.log(data);
+        app.clearMessages();
         app.renderMessage(data.results);
       },
       error: function (data) {
@@ -61,10 +65,13 @@ var app = {
   handleUsernameClick: function(username) {
     // document.getElementById("username").addEventListener("click", console.log('hi'));
     $('#main').append('<div>' + username + '</div>');
-  },
-  refreshMessages: function() {
-      
-}
+  }
+  // refreshMessages: function() {
+  //   app.clearMessages();
+  //   app.fetch();
+  //   app.renderMessage();
+    
+  // }
   // sendMessage: function() {
   //   $('#submitButton').on('click', function() {
   //     console.log('hey');
@@ -88,6 +95,6 @@ $(document).ready(function() {
   });
 
 });
-
+// var refInterval = setInterval(app.refreshMessages(), 2000);
 
 // var friendsList = [];
