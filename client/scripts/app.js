@@ -8,7 +8,7 @@ var app = {
       // This is the url you should use to communicate with the parse API server.
       url: app.server,
       type: 'POST',
-      data: message,
+      data: JSON.stringify(message),
       contentType: 'application/json',
       success: function (data) {
         console.log('chatterbox: Message sent');
@@ -23,10 +23,10 @@ var app = {
     $.ajax({
       url: app.server,
       type: 'GET',
-      data: '',
+      data: 'order=-createdAt',
       contentType: '',
       success: function (data) {
-        console.log('chatterbox: Message sent');
+        console.log('chatterbox: Data loaded');
         console.log(data);
         app.renderMessage(data.results);
       },
@@ -48,7 +48,7 @@ var app = {
       var text = message[i].text;
       var roomname = message[i].roomname;
 
-      $('#chats').append('<div>' + '<button href="#" class=username>' + username + '</button>' + ': ' + text + '</div>');
+      $('#chats').append('<div>' + '<button href="#" class=username>' + username + '</button>' + ': ' + _.escape(JSON.stringify(text)) + '</div>');
       $('.username').click(function() {
         app.handleUsernameClick(username);
       });
@@ -62,4 +62,22 @@ var app = {
     // document.getElementById("username").addEventListener("click", console.log('hi'));
     $('#main').append('<div>' + username + '</div>');
   }
+  // sendMessage: function() {
+  //   $('#submitButton').on('click', function() {
+  //     console.log('hey');
+  //   });
+  // }
 };
+
+$(document).ready(function() {
+
+  $('#submitButton').on('click', function() {
+    var obj = {};
+    // var ourUsername = window.username;
+    var userMessage = $('#messageBox').val(); 
+    obj.text = userMessage;
+    app.send(obj);
+  // var messageText = $('#messageBox')
+  });
+});
+// var friendsList = [];
