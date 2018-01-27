@@ -59,6 +59,13 @@ form input[type=text] {
     padding: 5px;
 }
 
+#messageBox {
+    margin-right: 10px;
+    width: 100%;
+    font-size: 12px;
+    padding: 5px;
+}
+
 .chat {
     padding: 5px;
     margin-bottom: 5px;

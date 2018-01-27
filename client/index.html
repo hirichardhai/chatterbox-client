@@ -27,7 +27,12 @@
     <div id="main">
       <h1>chatterbox</h1>
       <div class="friendsList"></div>
-      <form>  Type message <input type='text' class='textBox'>     <input type='submit'></input>
+
+        <form action="app.send()">
+
+        <textarea class ='chat' type='text' id='messageBox' name="message" placeholder="Your message here..."></textarea>
+
+        <input type='submit' value='Send'></input>
  
       </form>
       
