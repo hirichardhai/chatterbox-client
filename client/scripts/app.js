@@ -72,11 +72,14 @@ var app = {
 $(document).ready(function() {
 
   $('#submitButton').on('click', function() {
+    console.log(window.location.search);
     var obj = {};
-    // var ourUsername = window.username;
+    var ourUsername = window.location.search.slice(10);
     var userMessage = $('#messageBox').val(); 
     obj.text = userMessage;
+    obj.username = ourUsername;
     app.send(obj);
+  
   // var messageText = $('#messageBox')
   });
 });
