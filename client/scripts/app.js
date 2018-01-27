@@ -61,7 +61,10 @@ var app = {
   handleUsernameClick: function(username) {
     // document.getElementById("username").addEventListener("click", console.log('hi'));
     $('#main').append('<div>' + username + '</div>');
-  }
+  },
+  refreshMessages: function() {
+      
+}
   // sendMessage: function() {
   //   $('#submitButton').on('click', function() {
   //     console.log('hey');
@@ -72,15 +75,19 @@ var app = {
 $(document).ready(function() {
 
   $('#submitButton').on('click', function() {
-    console.log(window.location.search);
     var obj = {};
-    var ourUsername = window.location.search.slice(10);
     var userMessage = $('#messageBox').val(); 
     obj.text = userMessage;
-    obj.username = ourUsername;
+    obj.username = window.location.search.slice(10);
     app.send(obj);
-  
-  // var messageText = $('#messageBox')
+    app.fetch();
   });
+
+  $('#clearMessages').on('click', function() {
+    app.clearMessages();
+  });
+
 });
+
+
 // var friendsList = [];

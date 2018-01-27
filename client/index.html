@@ -11,6 +11,7 @@
     <script>
       // YOU DO NOT NEED TO EDIT THIS CODE
       if (!/(&|\?)username=/.test(window.location.search)) {
+        
         var newSearch = window.location.search;
         if (newSearch !== '' & newSearch !== '?') {
           newSearch += '&';
@@ -32,7 +33,8 @@
 
         <textarea class ='chat' type='text' id='messageBox' name="message" placeholder="Your message here..."></textarea>
 
-        <input type='submit' onclick="return false" id='submitButton' ></input>
+        <input type='submit' onclick="return false" id='submitButton'></input>
+        <button type='text' id='clearMessages' onclick="return false">Clear Messages</button>
  
       </form>
       
