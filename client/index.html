@@ -24,24 +24,29 @@
     <script src="env/config.js"></script>
     <script src="scripts/app.js"></script>
   </head>
+<!-- runs our initializer -->
   <body onload='app.init()'>
     <div id="main">
       <h1>chatterbox</h1>
+      <div id="roomSelect">
+<!-- select is for the room dropdown selector -->
+        <select id='rooms'>Select Rooms</div>
+
       <div class="friendsList"></div>
-
-        <form>
-
+      <form>
+<!-- textarea is the form to write messages -->
         <textarea class ='chat' type='text' id='messageBox' name="message" placeholder="Your message here..."></textarea>
-
-        <input type='submit' onclick="return false" id='submitButton'></input>
-        <button type='text' id='clearMessages' onclick="return false">Clear Messages</button>
- 
       </form>
+<!-- this input is for submitting whatever is in the textarea -->
+      <input type='submit' onclick="return false" id='submitButton'></input>
+      <button type='text' id='clearMessages' onclick="return false">Clear Messages</button>
+ 
+
       
       <!-- Your HTML goes here! -->
 
     </div>
     <div id="chats"></div>
-    <div id="roomSelect"></div>
+
   </body>
 </html>
